@@ -15,10 +15,12 @@ class Bot(commands.Bot):
     @commands.command()
     async def hello(self, ctx: commands.Context):
         # Send a hello back!
-        if ctx.auther.name == 'MiniMatties':
-            
-
         await ctx.send(f'Hello {ctx.author.name}!')
+
+    #still in test state [shoutout command]
+    @commands.command()
+    async def shoutout(self, ctx: commands.Context):
+        print(f'check out {ctx.target.user} over at https://www.twitch.tv/{ctx.target.user}')
 
 
 bot = Bot()
