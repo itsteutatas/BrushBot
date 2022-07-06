@@ -24,8 +24,8 @@ class Bot(commands.Bot):
 
 
     #prestate [giveaway]
-    @commands.command()
-    async def giveaway(self):
+    #@commands.command()
+    #async def giveaway(self):
 
 
     #teststate [discord command]
