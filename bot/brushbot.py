@@ -23,5 +23,16 @@ class Bot(commands.Bot):
         print(f'check out {ctx.target.user} over at https://www.twitch.tv/{ctx.target.user}')
 
 
+    #prestate [giveaway]
+    @commands.command()
+    async def giveaway(self):
+
+
+    #teststate [discord command]
+    @commands.command()
+    async def discord(self):
+        print(f'https://discord.gg/u2Jk8eBzPv')
+
+
 bot = Bot()
 bot.run()
