@@ -20,7 +20,7 @@ class Bot(commands.Bot):
     user = input()
     #final state [shoutout command]
     @commands.command()
-    async def shoutout(self, ctx: commands.Context, user):
+    async def so(self, ctx: commands.Context, user):
         user1 = user.replace('@', '')
         await ctx.send(f'check out {user} over at https://www.twitch.tv/{user1}')
 
