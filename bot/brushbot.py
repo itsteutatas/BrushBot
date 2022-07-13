@@ -17,10 +17,12 @@ class Bot(commands.Bot):
         # Send a hello back!
         await ctx.send(f'Hello {ctx.author.name}!')
 
-    #still in test state [shoutout command]
+    user = input()
+    #final state [shoutout command]
     @commands.command()
-    async def shoutout(self, ctx: commands.Context):
-        print(f'check out {ctx.target.user} over at https://www.twitch.tv/{ctx.target.user}')
+    async def shoutout(self, ctx: commands.Context, user):
+        user1 = user.replace('@', '')
+        await ctx.send(f'check out {user} over at https://www.twitch.tv/{user1}')
 
 
     #prestate [giveaway]
