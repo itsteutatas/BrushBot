@@ -1,0 +1,32 @@
+giveaway reference located at ~\BrushBot\bot\brushbot.py/    state description on line 28
+
+giveaway command full final state would need features like:
+    web integration for displayable counters and winners
+        smooth ui with easy to define boundaries for...
+            giveaway prize
+            length of giveaway
+
+
+giveaway command preweb final state would need features like:
+    database infrastructure
+        setup of database
+            base datastructures for command
+
+        check for read and write properties
+            early state possible use of txt file
+
+    working command for full setup
+        locked for mods/broadcasters/editors or possible trustlist only
+        possible versions like:
+            !giveaway {time} {prize}
+            !gaway {time} {price}
+                end of time print winner
+
+    working command for joining
+        possible versions like:
+            !join
+            !giveaway
+
+    usage of time/timer
+        check at which time the giveaway will end
+

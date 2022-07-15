@@ -1,0 +1,49 @@
+web reference located at ~\BrushBot\web\
+
+giveaway reference here located at ~\BrushBot\roadmaps\GiveAway command\
+
+
+keynotes for webinterface
+    user friendly design
+        dark mode only
+            saves power ez
+
+        welcoming frontpage for the web interface
+            menu on the left side
+                navigation around the website
+
+            menu options like:
+                giveaways
+                    buttons / fill in boxes
+                        for x time  giveaway runs
+                            counting down
+
+                        start button
+
+                    bigger box displaying names of joined participants
+                        preferably going from top to bottom centered
+
+                    box on the left side of the screen
+                        1/3 from top and down
+                            displaying the last couple winners
+
+                    box on the left side of the screen
+                        from that 1/3 down mark to 2/3 down
+                            displaying joined subs/vip's
+
+                    box on the left side of the screen
+                        from that 2/3 down mark to bottom
+                            small settings box for configuration of sub/vip bonus chance
+
+
+                command creation
+                discord link refer
+                custom notification sounds
+                    here under special person stream join sounds
+
+                dashboard stats
+        easy to read fonts
+            high contrast color for text
+        high contrast dark mode
+
+

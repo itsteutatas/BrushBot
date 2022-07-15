@@ -30,7 +30,7 @@ class Bot(commands.Bot):
     #async def giveaway(self):
 
 
-    #final state [discord command]
+    #final state preWeb [discord command]
     @commands.command()
     async def discord(self, ctx: commands.Context):
         await ctx.send("https://discord.gg/u2Jk8eBzPv")
