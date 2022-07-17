@@ -1,4 +1,5 @@
-from twitchio.ext import commands
+from twitchio.ext import commands, routines, sounds
+
 
 
 class Bot(commands.Bot):
@@ -30,10 +31,26 @@ class Bot(commands.Bot):
     #async def giveaway(self):
 
 
-    #final state preWeb [discord command]
+
+    # final state preWeb [discord command]
     @commands.command()
     async def discord(self, ctx: commands.Context):
         await ctx.send("https://discord.gg/u2Jk8eBzPv")
+
+    #prestate [custom sound appearance]
+    @commands.command()
+    async def hey(self, message:):
+        if message.author.name.lower() == 'teutatas':
+            sound = sounds.Sound(source='Tene.mp3')
+            self.player.play(sound)
+
+
+    # test state preWeb [discord routine]
+    @routines.routine(minutes=20)
+    async def discord1(self, ctx: commands.Context):
+        await ctx.send("https://discord.gg/u2Jk8eBzPv")
+        discord1.start()
+
 
 
 bot = Bot()
