@@ -39,7 +39,7 @@ class Bot(commands.Bot):
 
     #prestate [custom sound appearance]
     @commands.command()
-    async def hey(self, message:):
+    async def hey(self, message):
         if message.author.name.lower() == 'teutatas':
             sound = sounds.Sound(source='Tene.mp3')
             self.player.play(sound)
@@ -49,7 +49,7 @@ class Bot(commands.Bot):
     @routines.routine(minutes=20)
     async def discord1(self, ctx: commands.Context):
         await ctx.send("https://discord.gg/u2Jk8eBzPv")
-        discord1.start()
+    discord1.start()
 
 
 
