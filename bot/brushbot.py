@@ -1,5 +1,5 @@
 from twitchio.ext import commands, routines, sounds
-
+import pyaudio
 
 
 class Bot(commands.Bot):
@@ -39,11 +39,11 @@ class Bot(commands.Bot):
 
     #prestate [custom sound appearance]
     @commands.command()
-    async def hey(self, message):
+    async def hey(self, ctx: commands.Context, message):
         if message.author.name.lower() == 'teutatas':
             sound = sounds.Sound(source='Tene.mp3')
             self.player.play(sound)
-
+            await ctx.send("messages")
 
     # test state preWeb [discord routine]
     @routines.routine(minutes=20)
