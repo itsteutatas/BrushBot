@@ -7,6 +7,7 @@ class Bot(commands.Bot):
     def __init__(self):
         # Initialise our Bot with our access token, prefix and a list of channels to join on boot...
         super().__init__(token='av9ea9ynv6d1xbturc6zzkiwz5mueu', prefix='!', initial_channels=['frica_friggie'])
+        self.player = sounds.AudioPlayer(callback=self.player_done)
 
     async def event_ready(self):
         # We are logged in and ready to chat and use commands...
