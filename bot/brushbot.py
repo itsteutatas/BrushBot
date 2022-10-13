@@ -7,7 +7,10 @@ class Bot(commands.Bot):
     def __init__(self):
         # Initialise our Bot with our access token, prefix and a list of channels to join on boot...
         super().__init__(token='av9ea9ynv6d1xbturc6zzkiwz5mueu', prefix='!', initial_channels=['frica_friggie'])
-        self.player = sounds.AudioPlayer(callback=self.player_done)
+        self.event_player = sounds.AudioPlayer(callback=self.player_done)
+
+    async def player_done(self):
+        print('Finished playing song!')
 
     async def event_ready(self):
         # We are logged in and ready to chat and use commands...
@@ -51,6 +54,13 @@ class Bot(commands.Bot):
     async def discord1(self, ctx: commands.Context):
         await ctx.send("https://discord.gg/u2Jk8eBzPv")
     discord1.start()
+
+    @commands.command()
+    async def hello(self) -> None:
+        # This is just an example only...
+        # Playing a sound on every message could get extremely spammy...
+        sound = sounds.Sound(source='Tene.mp3')
+        self.event_player.play(sound)
 
 
 
