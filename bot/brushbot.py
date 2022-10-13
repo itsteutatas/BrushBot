@@ -1,5 +1,9 @@
 from twitchio.ext import commands, routines, sounds
 import pyaudio
+import random
+import sys
+import time
+import asyncio
 
 
 class Bot(commands.Bot):
@@ -10,7 +14,7 @@ class Bot(commands.Bot):
         self.event_player = sounds.AudioPlayer(callback=self.player_done)
 
     async def player_done(self):
-        print('Finished playing song!')
+        print(f'Finished playing song!')
 
     async def event_ready(self):
         # We are logged in and ready to chat and use commands...
@@ -23,25 +27,37 @@ class Bot(commands.Bot):
         await ctx.send(f'Hello {ctx.author.name}!')
 
     user = input()
-    #final state [shoutout command]
+
+    # final state [shoutout command]
     @commands.command()
     async def so(self, ctx: commands.Context, user):
         user1 = user.replace('@', '')
         await ctx.send(f'check out {user} over at https://www.twitch.tv/{user1}')
 
+    # prestate [giveaway]
+    @commands.command()
+    async def giveaway(self, ctx, duration: int, *, prize: str):
+        msg = await ctx.send(f'GivePLZ Giveaway TakeNRG')
+        participants = []
 
-    #prestate [giveaway]
-    #@commands.command()
-    #async def giveaway(self):
+        @commands.command()
+        async def join(ctx: commands.Context):
+            participants.append({ctx.author.name})
+            await ctx.send(f'{ctx.author.name} successfully joined the giveaway')
+            await asyncio.sleep(3)
 
-
+        if len(participants) == 0:
+            await ctx.send(f'No participants in giveaway')
+        else:
+            winner = random.choice(participants)
+            await ctx.send(f'Congrats ', winner, f'you won the giveaway')
 
     # final state preWeb [discord command]
     @commands.command()
     async def discord(self, ctx: commands.Context):
         await ctx.send("https://discord.gg/u2Jk8eBzPv")
 
-    #prestate [custom sound appearance]
+    # prestate [custom sound appearance]
     @commands.command()
     async def hey(self, ctx: commands.Context, message):
         if message.author.name.lower() == 'teutatas':
@@ -53,6 +69,7 @@ class Bot(commands.Bot):
     @routines.routine(minutes=20)
     async def discord1(self, ctx: commands.Context):
         await ctx.send("https://discord.gg/u2Jk8eBzPv")
+
     discord1.start()
 
     @commands.command()
@@ -61,7 +78,6 @@ class Bot(commands.Bot):
         # Playing a sound on every message could get extremely spammy...
         sound = sounds.Sound(source='Tene.mp3')
         self.event_player.play(sound)
-
 
 
 bot = Bot()
