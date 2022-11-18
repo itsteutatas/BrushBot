@@ -1,9 +1,9 @@
 import mysql.connector
 import time
 import datetime
+from mysql.connector import Error
 
-
-def collect():
+def participate():
     localConfig = {
         'user': 'test',
         'password': '',
@@ -13,7 +13,9 @@ def collect():
 
     cn = mysql.connector.connect(**localConfig)
     cr = cn.cursor()
-    print('connected')
+
+
+
     name = 0
     follower = 1
     cr.execute(f"INSERT INTO participants(participantID, participantNAME, follower) VALUES (1, '{name}', {follower})")
@@ -25,3 +27,6 @@ def collect():
 
     cn.close()
     exit()
+
+if __name__ == '__main__':
+    participate()

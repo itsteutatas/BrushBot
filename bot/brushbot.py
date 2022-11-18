@@ -39,6 +39,7 @@ class Bot(commands.Bot):
     async def giveaway(self, ctx, duration: int, *, prize: str):
         await ctx.send(f'GivePLZ Giveaway TakeNRG')
 
+    while giveaway == True:
 
         @commands.command()
         async def join(ctx: commands.Context):
