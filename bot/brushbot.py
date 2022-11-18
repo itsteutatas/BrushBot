@@ -37,7 +37,7 @@ class Bot(commands.Bot):
     # prestate [giveaway]
     @commands.command()
     async def giveaway(self, ctx, duration: int, *, prize: str):
-        msg = await ctx.send(f'GivePLZ Giveaway TakeNRG')
+        await ctx.send(f'GivePLZ Giveaway TakeNRG')
         participants = []
 
         @commands.command()
