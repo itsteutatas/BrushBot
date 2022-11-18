@@ -38,19 +38,11 @@ class Bot(commands.Bot):
     @commands.command()
     async def giveaway(self, ctx, duration: int, *, prize: str):
         await ctx.send(f'GivePLZ Giveaway TakeNRG')
-        participants = []
+
 
         @commands.command()
         async def join(ctx: commands.Context):
-            participants.append({ctx.author.name})
-            await ctx.send(f'{ctx.author.name} successfully joined the giveaway')
-            await asyncio.sleep(3)
-
-        if len(participants) == 0:
-            await ctx.send(f'No participants in giveaway')
-        else:
-            winner = random.choice(participants)
-            await ctx.send(f'Congrats ', winner, f'you won the giveaway')
+            pass
 
     # final state preWeb [discord command]
     @commands.command()
