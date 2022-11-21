@@ -5,12 +5,13 @@ import sys
 import time
 import asyncio
 
+oauth = 'av9ea9ynv6d1xbturc6zzkiwz5mueu'
 
 class Bot(commands.Bot):
 
     def __init__(self):
         # Initialise our Bot with our access token, prefix and a list of channels to join on boot...
-        super().__init__(token='av9ea9ynv6d1xbturc6zzkiwz5mueu', prefix='!', initial_channels=['frica_friggie'])
+        super().__init__(token=oauth, prefix='!', initial_channels=['frica_friggie'])
         self.event_player = sounds.AudioPlayer(callback=self.player_done)
 
     async def player_done(self):
@@ -36,14 +37,26 @@ class Bot(commands.Bot):
 
     # prestate [giveaway]
     @commands.command()
-    async def giveaway(self, ctx, duration: int, *, prize: str):
+    async def giveaway(self, ctx: commands.Context, duration: int, *, prize: str):
         await ctx.send(f'GivePLZ Giveaway TakeNRG')
+        if ctx.author.name != 'teutatas':
+            return
+        self.giveaway_bool = True
 
-    while giveaway == True:
+    @commands.command()
+    async def endgiveaway(self, ctx: commands.Context):
+        if ctx.author.name != 'teutatas':
+            return
+        self.giveaway_bool = False
 
-        @commands.command()
-        async def join(ctx: commands.Context):
-            pass
+
+    @commands.command()
+    async def join(self, ctx: commands.Context):
+        if self.giveaway_bool == True:
+            return
+        name = ctx.author.name
+
+
 
     # final state preWeb [discord command]
     @commands.command()

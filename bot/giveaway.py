@@ -15,10 +15,8 @@ def participate():
     cr = cn.cursor()
 
 
-
-    name = 0
-    follower = 1
-    cr.execute(f"INSERT INTO participants(participantID, participantNAME, follower) VALUES (1, '{name}', {follower})")
+    name = ''
+    cr.execute(f"INSERT INTO participants(participantID, participantNAME) VALUES (1, '{name}')")
     cr.execute("SELECT * FROM participants")
     res = cr.fetchall()
     print(res[-1])
