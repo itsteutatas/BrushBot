@@ -7,3 +7,6 @@ CREATE table participants(
     participantNAME VARCHAR(60),
     PRIMARY KEY (participantID)
                          );
+Drop table participants
+
+

@@ -4,14 +4,18 @@ import random
 import sys
 import time
 import asyncio
+from giveaway import participate, end, start
+import mysql.connector
+
 
 oauth = 'av9ea9ynv6d1xbturc6zzkiwz5mueu'
 
 class Bot(commands.Bot):
 
+    giveaway_bool = False
     def __init__(self):
         # Initialise our Bot with our access token, prefix and a list of channels to join on boot...
-        super().__init__(token=oauth, prefix='!', initial_channels=['frica_friggie'])
+        super().__init__(token=oauth, prefix='!', initial_channels=['teutatas'])
         self.event_player = sounds.AudioPlayer(callback=self.player_done)
 
     async def player_done(self):
@@ -35,26 +39,33 @@ class Bot(commands.Bot):
         user1 = user.replace('@', '')
         await ctx.send(f'check out {user} over at https://www.twitch.tv/{user1}')
 
-    # prestate [giveaway]
+    # teststate [giveaway]
     @commands.command()
-    async def giveaway(self, ctx: commands.Context, duration: int, *, prize: str):
+    async def giveaway(self, ctx: commands.Context):
         await ctx.send(f'GivePLZ Giveaway TakeNRG')
-        if ctx.author.name != 'teutatas':
+        if ctx.author.name == 'teutatas':
+            start()
+            self.giveaway_bool = True
             return
-        self.giveaway_bool = True
 
     @commands.command()
     async def endgiveaway(self, ctx: commands.Context):
-        if ctx.author.name != 'teutatas':
-            return
-        self.giveaway_bool = False
+        if ctx.author.name == 'teutatas':
 
+            use = str(end())
+            use = use.replace('(', '')
+            use = use.replace(',)', '')
+            await ctx.send(f'TakeNRG Congratulations {use} you won the giveaway GivePLZ')
+            self.giveaway_bool = False
+            return
 
     @commands.command()
     async def join(self, ctx: commands.Context):
         if self.giveaway_bool == True:
+            name = ctx.author.name
+            participate(name)
             return
-        name = ctx.author.name
+
 
 
 
@@ -72,11 +83,11 @@ class Bot(commands.Bot):
             await ctx.send("messages")
 
     # test state preWeb [discord routine]
-    @routines.routine(minutes=20)
+    """ @routines.routine(minutes=1)
     async def discord1(self, ctx: commands.Context):
         await ctx.send("https://discord.gg/u2Jk8eBzPv")
+    """
 
-    discord1.start()
 
     @commands.command()
     async def hello(self) -> None:
@@ -86,5 +97,8 @@ class Bot(commands.Bot):
         self.event_player.play(sound)
 
 
+
 bot = Bot()
+#bot.discord1.start()
 bot.run()
+
