@@ -11,9 +11,11 @@ giveaway command preweb final state would need features like:
     database infrastructure
         setup of database
             base datastructures for command
+                ***completed***
 
         check for read and write properties
             early state possible use of txt file
+                ***skipped this state not needed***
 
     working command for full setup
         locked for mods/broadcasters/editors or possible trustlist only
@@ -22,11 +24,15 @@ giveaway command preweb final state would need features like:
             !gaway {time} {price}
                 end of time print winner
 
+                ***changed this to be 1/1 command for start stop and added join command***
+
     working command for joining
         possible versions like:
             !join
             !giveaway
+            ***not decided***
+
 
     usage of time/timer
         check at which time the giveaway will end
-
+            ***maybe not needed***
