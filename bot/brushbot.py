@@ -1,3 +1,5 @@
+import twitchio
+from twitchio import http
 from twitchio.ext import commands, routines, sounds
 import pyaudio
 import random
@@ -62,8 +64,10 @@ class Bot(commands.Bot):
     @commands.command()
     async def join(self, ctx: commands.Context):
         if self.giveaway_bool == True:
+
             name = ctx.author.name
             participate(name)
+
             return
 
 
