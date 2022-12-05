@@ -18,10 +18,10 @@ class Bot(commands.Bot):
     def __init__(self):
         # Initialise our Bot with our access token, prefix and a list of channels to join on boot...
         super().__init__(token=oauth, prefix='!', initial_channels=['teutatas'])
-        self.event_player = sounds.AudioPlayer(callback=self.player_done)
+        #self.event_player = sounds.AudioPlayer(callback=self.player_done)
 
-    async def player_done(self):
-        print(f'Finished playing song!')
+    #async def player_done(self):
+        #print(f'Finished playing song!')
 
     async def event_ready(self):
         # We are logged in and ready to chat and use commands...
@@ -76,27 +76,27 @@ class Bot(commands.Bot):
         await ctx.send("https://discord.gg/u2Jk8eBzPv")
 
     # prestate [custom sound appearance]
-    @commands.command()
+    """@commands.command()
     async def hey(self, ctx: commands.Context, message):
         if message.author.name.lower() == 'teutatas':
             sound = sounds.Sound(source='Tene.mp3')
             self.player.play(sound)
             await ctx.send("messages")
-
+    """
     # test state preWeb [discord routine]
     """ @routines.routine(minutes=1)
     async def discord1(self, ctx: commands.Context):
         await ctx.send("https://discord.gg/u2Jk8eBzPv")
     """
 
-
+"""
     @commands.command()
     async def hello(self) -> None:
         # This is just an example only...
         # Playing a sound on every message could get extremely spammy...
         sound = sounds.Sound(source='Tene.mp3')
         self.event_player.play(sound)
-
+"""
 
 
 bot = Bot()
