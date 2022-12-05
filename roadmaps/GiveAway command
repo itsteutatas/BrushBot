@@ -8,31 +8,26 @@ giveaway command full final state would need features like:
 
 
 giveaway command preweb final state would need features like:
-    database infrastructure
-        setup of database
-            base datastructures for command
-                ***completed***
-
-        check for read and write properties
-            early state possible use of txt file
-                ***skipped this state not needed***
+    ☒ database infrastructure
+        ☒ setup of database
+            ☒ base datastructures for command
 
     working command for full setup
-        locked for mods/broadcasters/editors or possible trustlist only
+        ☒ locked for mods/broadcasters/editors or possible trustlist only   [locked for broadcaster for now]
         possible versions like:
-            !giveaway {time} {prize}
-            !gaway {time} {price}
-                end of time print winner
+            !giveaway {time} {prize}    [semi solved doesnt state time and price]
+            !gaway {time} {price}   [semi solved doesnt state time and price]
+                ☒ end of time print winner    [prints winner when end command called]
 
                 ***changed this to be 1/1 command for start stop and added join command***
 
-    working command for joining
+    ☒ working command for joining   [more to come]
         possible versions like:
-            !join
+            ☒ !join
             !giveaway
-            ***not decided***
 
 
-    usage of time/timer
+
+    usage of time/timer [needed for webstate and potential in preweb to disable joincommand at x time]
         check at which time the giveaway will end
-            ***maybe not needed***
+

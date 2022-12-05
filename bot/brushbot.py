@@ -7,7 +7,7 @@ import sys
 import time
 import asyncio
 from giveaway import participate, end, start
-import mysql.connector
+
 
 
 oauth = 'av9ea9ynv6d1xbturc6zzkiwz5mueu'
@@ -69,9 +69,6 @@ class Bot(commands.Bot):
             participate(name)
 
             return
-
-
-
 
     # final state preWeb [discord command]
     @commands.command()
