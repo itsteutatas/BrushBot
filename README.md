@@ -3,6 +3,23 @@ BrushBot is a multi usage twitch chatbot that is in work of progress at the mome
 
 
 
+# Commands
+Default trigger is !
+
+## User commands
+  discord
+  join
+
+
+
+## Moderation commands
+  giveaway
+  endgiveaway
+  so
+  
+
+
+
 
 
 
