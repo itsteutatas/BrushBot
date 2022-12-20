@@ -4,22 +4,21 @@ BrushBot is a multi usage twitch chatbot that is in work of progress at the mome
 
 
 # Commands
-Default trigger is !
 
 ## User commands
 | User commands   | Usecase                   |
 |:---------------:|:-------------------------:|
-| commands        | brings you here           |
-| join            | joins running giveaway    |
-| discord         | sends a discord link      |
+| !commands        | brings you here           |
+| !join            | joins running giveaway    |
+| !discord         | sends a discord link      |
 
 
 ## Moderation commands
 | Moderation commands   | Usecase                                 |
 |:---------------------:|:---------------------------------------:|
-| giveaway              | starts a giveaway                       |
-| endgiveaway           | ends giveaway                           |
-| so                    | shoutout x user format !so [username]   |
+| !giveaway              | starts a giveaway                       |
+| !endgiveaway           | ends giveaway                           |
+| !so                    | shoutout x user format !so [username]   |
   
 
 
