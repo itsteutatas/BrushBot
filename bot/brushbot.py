@@ -28,16 +28,13 @@ class Bot(commands.Bot):
         print(f'Logged in as | {self.nick}')
         print(f'User id is | {self.user_id}')
 
-    @commands.command()
-    async def hello(self, ctx: commands.Context):
-        # Send a hello back!
-        await ctx.send(f'Hello {ctx.author.name}!')
 
-    user = input()
+
 
     # final state [shoutout command]
     @commands.command()
     async def so(self, ctx: commands.Context, user):
+        user = input()
         user1 = user.replace('@', '')
         await ctx.send(f'check out {user} over at https://www.twitch.tv/{user1}')
 
@@ -75,6 +72,19 @@ class Bot(commands.Bot):
     async def discord(self, ctx: commands.Context):
         await ctx.send("https://discord.gg/u2Jk8eBzPv")
 
+    # test state preWeb [discord routine]
+    @routines.routine(minutes=1)
+    async def discord1(self, ctx: commands.Context):
+        await ctx.send("https://discord.gg/u2Jk8eBzPv")
+
+
+
+
+    @commands.command()
+    async def commands(self, ctx: commands.Context):
+        await ctx.send("Check out the diffrent features over at https://tinyurl.com/3hshdmjs")
+
+
     # prestate [custom sound appearance]
     """@commands.command()
     async def hey(self, ctx: commands.Context, message):
@@ -83,11 +93,7 @@ class Bot(commands.Bot):
             self.player.play(sound)
             await ctx.send("messages")
     """
-    # test state preWeb [discord routine]
-    """ @routines.routine(minutes=1)
-    async def discord1(self, ctx: commands.Context):
-        await ctx.send("https://discord.gg/u2Jk8eBzPv")
-    """
+
 
 """
     @commands.command()
