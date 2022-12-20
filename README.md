@@ -9,9 +9,9 @@ Default trigger is !
 ## User commands
 | User commands   | Usecase                   |
 |:---------------:|:-------------------------:|
-| discord         | sends a discord link      |
+| commands        | brings you here           |
 | join            | joins running giveaway    |
-
+| discord         | sends a discord link      |
 
 
 ## Moderation commands
