@@ -1,5 +1,25 @@
 # BrushBot
-BrushBot is a multi usage twitch chatbot that is in work of progress at the moment it only have limited features like: Discord command (hardcoded), shoutout command, giveaway function and hello command
+BrushBot is a multi usage twitch chatbot that is in work of progress at the moment it only have limited features
+
+
+
+# Commands
+
+## User commands
+| User commands   | Usecase                   |
+|:---------------:|:-------------------------:|
+| !commands        | brings you here           |
+| !join            | joins running giveaway    |
+| !discord         | sends a discord link      |
+
+
+## Moderation commands
+| Moderation commands   | Usecase                                 |
+|:---------------------:|:---------------------------------------:|
+| !giveaway              | starts a giveaway                       |
+| !endgiveaway           | ends giveaway                           |
+| !so                    | shoutout x user format !so [username]   |
+  
 
 
 
