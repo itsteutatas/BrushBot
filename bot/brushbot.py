@@ -1,4 +1,3 @@
-import twitchio
 from twitchio import http
 from twitchio.ext import commands, routines, sounds
 import pyaudio
@@ -10,9 +9,9 @@ from giveaway import participate, end, start
 
 
 
-oauth = 'av9ea9ynv6d1xbturc6zzkiwz5mueu'
 
-class Bot(commands.Bot):
+
+class brush(commands.Bot):
 
     giveaway_bool = False
     def __init__(self):
@@ -41,11 +40,14 @@ class Bot(commands.Bot):
     # teststate [giveaway]
     @commands.command()
     async def giveaway(self, ctx: commands.Context):
-        await ctx.send(f'GivePLZ Giveaway TakeNRG')
-        if ctx.author.name == 'teutatas':
-            start()
-            self.giveaway_bool = True
-            return
+        if self.giveaway_bool == True:
+            ctx.send(f'Giveaway already running')
+        else:
+            await ctx.send(f'GivePLZ Giveaway TakeNRG')
+            if ctx.author.name == 'teutatas':
+                start()
+                self.giveaway_bool = True
+                return
 
     @commands.command()
     async def endgiveaway(self, ctx: commands.Context):
@@ -105,7 +107,7 @@ class Bot(commands.Bot):
 """
 
 
-bot = Bot()
+bot = brush()
 #bot.discord1.start()
 bot.run()
 
