@@ -8,7 +8,7 @@ import asyncio
 from giveaway import participate, end, start
 
 
-
+oauth = "av9ea9ynv6d1xbturc6zzkiwz5mueu"
 
 
 class brush(commands.Bot):
@@ -32,40 +32,40 @@ class brush(commands.Bot):
 
     # final state [shoutout command]
     @commands.command()
-    async def so(self, ctx: commands.Context, user):
-        user = input()
-        user1 = user.replace('@', '')
-        await ctx.send(f'check out {user} over at https://www.twitch.tv/{user1}')
+    async def so(self, ctx: commands.Context, name: str):
+        await ctx.send(f"Check out {name} over at twitch.tv/{name}")
 
     # teststate [giveaway]
     @commands.command()
     async def giveaway(self, ctx: commands.Context):
-        if self.giveaway_bool == True:
+        if self.giveaway_bool:
             ctx.send(f'Giveaway already running')
         else:
             await ctx.send(f'GivePLZ Giveaway TakeNRG')
             if ctx.author.name == 'teutatas':
-                start()
+                await start()
                 self.giveaway_bool = True
                 return
 
     @commands.command()
     async def endgiveaway(self, ctx: commands.Context):
         if ctx.author.name == 'teutatas':
-
-            use = str(end())
-            use = use.replace('(', '')
-            use = use.replace(',)', '')
-            await ctx.send(f'TakeNRG Congratulations {use} you won the giveaway GivePLZ')
-            self.giveaway_bool = False
-            return
+            if not self.giveaway_bool:
+                ctx.send(f'No giveaway running')
+            else:
+                use = str(end())
+                use = use.replace('(', '')
+                use = use.replace(',)', '')
+                await ctx.send(f'TakeNRG Congratulations {use} you won the giveaway GivePLZ')
+                self.giveaway_bool = False
+                return
 
     @commands.command()
     async def join(self, ctx: commands.Context):
         if self.giveaway_bool == True:
 
             name = ctx.author.name
-            participate(name)
+            await participate(name)
 
             return
 
@@ -83,7 +83,7 @@ class brush(commands.Bot):
 
 
     @commands.command()
-    async def commands(self, ctx: commands.Context):
+    async def docs(self, ctx: commands.Context):
         await ctx.send("Check out the diffrent features over at https://tinyurl.com/3hshdmjs")
 
 
