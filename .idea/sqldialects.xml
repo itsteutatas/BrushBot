@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/bot/giveaway.py" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/bot/brushbot.py" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/bot/dbconfig.py" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/giveawayDB.sql" dialect="MySQL" />
   </component>
   <component name="SqlResolveMappings">
-    <file url="file://$PROJECT_DIR$/bot/giveaway.py" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;name&quot;:{     &quot;@qname&quot;:&quot;e06ef881-f030-423a-8654-7dabb9cfa4f4&quot;    }   }  } }}" />
+    <file url="file://$PROJECT_DIR$/bot/dbconfig.py" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;name&quot;:{     &quot;@qname&quot;:&quot;e06ef881-f030-423a-8654-7dabb9cfa4f4&quot;    }   }  } }}" />
   </component>
 </project>

@@ -1,34 +1,66 @@
-from twitchio import http
-from twitchio.ext import commands, routines, sounds
-import pyaudio
-import random
-import sys
-import time
+from twitchio.ext import commands, routines
 import asyncio
-from giveaway import participate, end, start
+import dbconfig as dbcfg
+import oauthconfig as oauth
+import aiomysql
 
 
-oauth = "av9ea9ynv6d1xbturc6zzkiwz5mueu"
+class giveaways():
+    async def start(self):
+        conn = await aiomysql.connect(dbcfg.localconfig["host"], dbcfg.localconfig["user"], dbcfg.localconfig["password"], dbcfg.localconfig["db"])
+
+        print("connected")
+
+        cur = await conn.cursor()
+        await cur.execute("DROP Table participants")
+        await cur.execute(f"CREATE table participants(participantID int NOT NULL AUTO_INCREMENT,participantNAME VARCHAR(60),PRIMARY KEY (participantID))")
+        await conn.commit()
+        conn.close()
+
+    async def participate(name):
+
+        cn = await aiomysql.connect(dbcfg.localconfig["host"], dbcfg.localconfig["user"], dbcfg.localconfig["password"], dbcfg.localconfig["db"])
+        cr = cn.cursor()
+
+        cr.execute(f"SELECT * from participants where participantNAME = '{name}'")
+        if cr.fetchall():
+            pass
+        else:
+            cr.execute(f"INSERT INTO participants(participantID, participantNAME) VALUES (0, '{name}')")
+
+        cn.commit()
+
+        cn.close()
+
+    async def end(self):
+        cn = await aiomysql.connect(dbcfg.localconfig["host"], dbcfg.localconfig["user"], dbcfg.localconfig["password"], dbcfg.localconfig["db"])
+        cr = cn.cursor()
+
+        cr.execute("SELECT participantNAME FROM participants ORDER BY RAND() LIMIT 1")
+        winner = cr.fetchone()
+        cn.commit()
+
+        cn.close()
+        return winner
 
 
+
+# TODO: fix bot not sending messages/responses oauth token is not the problem
 class brush(commands.Bot):
-
     giveaway_bool = False
+
     def __init__(self):
         # Initialise our Bot with our access token, prefix and a list of channels to join on boot...
-        super().__init__(token=oauth, prefix='!', initial_channels=['teutatas'])
-        #self.event_player = sounds.AudioPlayer(callback=self.player_done)
+        super().__init__(token=oauth.oauth, prefix='!', initial_channels=['teutatas'])
+        # self.event_player = sounds.AudioPlayer(callback=self.player_done)
 
-    #async def player_done(self):
-        #print(f'Finished playing song!')
+    # async def player_done(self):
+    # print(f'Finished playing song!')
 
     async def event_ready(self):
         # We are logged in and ready to chat and use commands...
         print(f'Logged in as | {self.nick}')
         print(f'User id is | {self.user_id}')
-
-
-
 
     # final state [shoutout command]
     @commands.command()
@@ -39,11 +71,11 @@ class brush(commands.Bot):
     @commands.command()
     async def giveaway(self, ctx: commands.Context):
         if self.giveaway_bool:
-            ctx.send(f'Giveaway already running')
+            await ctx.send(f'Giveaway already running')
         else:
-            await ctx.send(f'GivePLZ Giveaway TakeNRG')
             if ctx.author.name == 'teutatas':
-                await start()
+                await ctx.send(f'GivePLZ Giveaway TakeNRG')
+                await giveaways.start(self)
                 self.giveaway_bool = True
                 return
 
@@ -53,7 +85,7 @@ class brush(commands.Bot):
             if not self.giveaway_bool:
                 ctx.send(f'No giveaway running')
             else:
-                use = str(end())
+                use = str(giveaways.end)
                 use = use.replace('(', '')
                 use = use.replace(',)', '')
                 await ctx.send(f'TakeNRG Congratulations {use} you won the giveaway GivePLZ')
@@ -63,11 +95,11 @@ class brush(commands.Bot):
     @commands.command()
     async def join(self, ctx: commands.Context):
         if self.giveaway_bool == True:
-
             name = ctx.author.name
-            await participate(name)
 
-            return
+            await giveaways.participate(name)
+
+            return name
 
     # final state preWeb [discord command]
     @commands.command()
@@ -79,13 +111,9 @@ class brush(commands.Bot):
     async def discord1(self, ctx: commands.Context):
         await ctx.send("https://discord.gg/u2Jk8eBzPv")
 
-
-
-
     @commands.command()
     async def docs(self, ctx: commands.Context):
         await ctx.send("Check out the diffrent features over at https://tinyurl.com/3hshdmjs")
-
 
     # prestate [custom sound appearance]
     """@commands.command()
@@ -106,8 +134,7 @@ class brush(commands.Bot):
         self.event_player.play(sound)
 """
 
-
 bot = brush()
-#bot.discord1.start()
+# bot.discord1.start()
 bot.run()
 
