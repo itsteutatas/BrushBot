@@ -25,7 +25,6 @@ class brushbot(commands.Bot):
         # We are logged in and ready to chat and use commands...
         print(f'Logged in as | {self.nick}')
         print(f'User id is | {self.user_id}')
-    # TODO: remake db in seperate script...
 
 
     # final state [shoutout command]
@@ -41,7 +40,7 @@ class brushbot(commands.Bot):
     @commands.command()
     async def discord(self, ctx: commands.Context):
         print('test')
-        await ctx.send("https://discord.gg/a3jHXau")
+        await ctx.send("None")
 
     # teststate [giveaway]
     @commands.command()
@@ -50,6 +49,9 @@ class brushbot(commands.Bot):
             if ctx.author.name in cfg.admin_n_list:
                 await ctx.send(f'Giveaway already running')
                 # TODO: think on this idea needs to exclude x streamer on their stream only
+
+            else:
+                await ctx.send(f'There is a giveaway running right now')
             """
             else:
                 participant_name = ctx.author.name
@@ -61,6 +63,8 @@ class brushbot(commands.Bot):
                 await ctx.send(f'GivePLZ Giveaway TakeNRG')
                 self.giveaway_bool = True
                 return
+            else:
+                ctx.send(f'There is no giveaway running')
 
     @commands.command()
     async def endgiveaway(self, ctx: commands.Context):
